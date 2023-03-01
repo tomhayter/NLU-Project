@@ -16,3 +16,7 @@ Emotions:
 https://www.kaggle.com/datasets/parulpandey/emotion-dataset
 
 https://www.kaggle.com/datasets/pashupatigupta/emotion-detection-from-text
+
+
+Stats:
+https://www.zippia.com/advice/music-industry-statistics/#:~:text=Music%20Industry%20Statistics%20FAQ,within%20that%20is%20the%20U.S.
