@@ -7,8 +7,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
+\usepackage[superscript, biblabel, nomove]{cite}
 
-\title{Your Catchy Project Title}
+\makeatletter \renewcommand{\@citess}[1]{\textsuperscript{\,[#1]}} \makeatother
+
+\title{Playlist Generator using Emotion Recognition and Semantic Textual Similarity}
 
 \author{
     Team member 1 \\
@@ -26,12 +29,16 @@
 Provide some context as to why/how your topic is: challenging, novel or useful. In other words, try to convince your reader that this is an interesting topic (and that it is worth working on not just because it is a requirement for COMP34812).
 
 \section{Problem Statement}
-Describe in specific terms the problem that you wish to address in your project. Explain what is given/provided (what you consider as input), what is/are the NLU task(s) that you propose to implement, and what the output will be. 
+
+The input will be either a song or a string of text that will be used to generate a playlist of songs (the output).
+
+We will first train an Emotion Recognition model using a dataset of tweets\cite{gupta_2021}\cite{pandey_2022}. This will be used to classify song lyrics into emotions. We will input a dataset of song lyrics\cite{shah_2021} into this model and produce a dictionary keyed by emotions that stores all songs inhibiting that emotion.
+Then, the user will input a song or a string of text, which will be parsed into the emotion recognition model to identify the emotions that the user wants to listen to. Then, a list of all the songs that have at least one matching emotion will be selected from the dictionary. After this, we will compare the Semantic Textual Similarity of the input string/song lyrics with each of the songs chosen previously, and rank them based on similarity. We will use this\cite{sentence-transformer} sentence transformer model to compare. A playlist of k-length will then be generated based on the most similar songs.
 
 \section{Related Work}
 Discuss what solutions already exist, e.g., what the state of the art is with respect to your chosen topic. Clarify your project aim (see Section II or VI of the COMP34812 Coursework Specifications document for an explanation/some examples of acceptable aims) in relation to existing related work.
 
-\section{Datasets and Evaluation Resources }
+\section{Datasets and Evaluation Resources}
 In this section, you can either: (1) describe any datasets you plan to use, if you have already found any that you can readily use; or (2) describe your plan for finding/gathering data (if you have not yet found any datasets relevant to your topic). When describing datasets, include the following details: language (English or otherwise), size (e.g., how many examples), source (e.g., news, Reddit, Twitter), and types of labels included. Importantly, discuss whether you (will) have the datasets/resources that will allow you to evaluate your proposed solution. 
 
 
@@ -55,5 +62,8 @@ In the table below, specify the activities that you need to complete as you deve
 
 \section*{References}
 Provide a list of references to support your statements/ideas, making sure they are properly cited in the above sections. You can also use this section to provide attribution to any datasets/resources you are planning to use.
+\bibliographystyle{plain}
+\bibliography{custom}
+
 
 \end{document}
