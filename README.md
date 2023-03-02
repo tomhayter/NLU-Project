@@ -10,6 +10,8 @@ https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
 Dataset Links:
 Song Lyrics:
 https://www.kaggle.com/datasets/deepshah16/song-lyrics-dataset
+https://www.kaggle.com/datasets/carlosgdcj/genius-song-lyrics-with-language-information
+https://www.kaggle.com/datasets/nikhilnayak123/5-million-song-lyrics-dataset
 
 Emotions:
 
