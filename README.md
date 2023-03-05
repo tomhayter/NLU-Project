@@ -22,3 +22,10 @@ https://www.kaggle.com/datasets/pashupatigupta/emotion-detection-from-text
 
 Stats:
 https://www.zippia.com/advice/music-industry-statistics/#:~:text=Music%20Industry%20Statistics%20FAQ,within%20that%20is%20the%20U.S.
+
+Papers:
+1(Multi-Emotion-Classification)https://aclanthology.org/2021.wassa-1.24.pdf
+2(DL-Semantic)https://cs224d.stanford.edu/reports/SanbornAdrian.pdf
+3(BERT)https://aclanthology.org/N19-1423.pdf
+5(Transformer-compression) https://arxiv.org/abs/2002.10957
+6(GloVe) https://nlp.stanford.edu/pubs/glove.pdf
