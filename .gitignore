@@ -6,3 +6,5 @@
 *.fdb_latexmk
 *.blg
 *.bbl
+
+code/models
