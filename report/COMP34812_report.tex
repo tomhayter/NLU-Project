@@ -137,7 +137,7 @@ There is no mathematical way to evaluate the performance of the final playlist g
 
 \section{Discussion}
 
-We have trained an emotion recognition model and, combined with a semantic embedding model, generated a playlist generation system that produces a playlist of songs emotionally and semantically similar to an input text. At first glance, the system appears to perform well. The playlists generated contain songs that are all focused around the same topics as those in the input text.
+We have trained an emotion recognition model and, combined with a semantic embedding model, developed a playlist generation system that produces a playlist of songs emotionally and semantically similar to an input text. At first glance, the system appears to perform well. The playlists generated contain songs that are all focused around the same topics as those in the input text.
 
 \begin{table}[h]
     \centering
@@ -145,11 +145,11 @@ We have trained an emotion recognition model and, combined with a semantic embed
     \begin{tabularx}{0.48\textwidth}{| X | X X X |} 
       \hline
       Emotion & Precision & Recall & f1 score\\ \hline
-      sadness & $1.00$ & $0.96$ & $0.98$ \\ \hline
-      joy & $0.96$ & $0.97$ & $0.96$ \\ \hline
-      love & $0.98$ & $0.98$ & $0.98$ \\ \hline
-      anger & $0.93$ & $1.00$ & $0.97$ \\ \hline
-      fear & $0.89$ & $0.91$ & $0.90$ \\ \hline
+      sadness & $1.00$ & $0.96$ & $0.98$ \\ 
+      joy & $0.96$ & $0.97$ & $0.96$ \\ 
+      love & $0.98$ & $0.98$ & $0.98$ \\ 
+      anger & $0.93$ & $1.00$ & $0.97$ \\ 
+      fear & $0.89$ & $0.91$ & $0.90$ \\ 
       surprise & $0.95$ & $0.86$ & $0.90$ \\ \hline
     \end{tabularx}
     \label{tbl:f1}
@@ -171,7 +171,7 @@ Figure \ref{fig:confusion} shows the confusion matrix for the emotion recognitio
 
 \section{Conclusion}
 
-A playlist generator has been produced that takes an input text, and produces a list of \textit{k} songs that have emotionally and semantically similar lyrics. This can be used by streaming services and their users to generate new playlists with new songs.
+A playlist generator has been produced that takes an input text, and produces a list of N songs that have emotionally and semantically similar lyrics. This can be used by streaming services and their users to generate new playlists with new songs.
 
 This project could be continued by connecting this system to a user interface that allows a user to select an existing song or enter input text in a more user-friendly environment. It could also be linked to the Application Programming Interface (API) for a streaming service to actually produce these playlists within the service.
 
