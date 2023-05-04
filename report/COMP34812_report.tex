@@ -29,11 +29,21 @@
 
 \section{Introduction}
 
-Similarly to the proposal, try to convince your reader that your project is interesting. Introduce and motivate your problem. Discuss the formulation of your task.
+The music scene has changed drastically over the last 20 years, and consumers have moved from listening either on the radio or via physical media to online streaming services such as Spotify \cite{streaming}. These streaming services deliver music in a variety of ways, one being the playlists that are generated for users to listen to. These playlists are accessible to all users and are shown to greatly improve the numebr of times those songs are streamed, which makes these playlists important to music artists wanting to spread their music. On top of this, streaming services want to attract as many customers to their service with the generation of playlists grouping similar songs together.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{images/PlaylistStreams.jpg}
+    \caption{Graph showing the followers and streams on inclusion in Spotify's playlist Today's Top Hits. Taken from \cite{playlists}}
+\end{figure}
+
+This proposes a novel system for playlist generation, taking an input text and producing a list of songs with similar emotions and semantic meanings within their lyrics. 
 
 \section{Related Work}
-Short reports do not necessarily need a dedicated related work section; if you are running out of space, you can at least cover relevant work briefly, for example when substantiating your motivations or conclusions.
 
+Emotion recognition (ER) is the task of assigning emotions to an input, in this case song lyrics. It can be applied to many different fields, such as natural language processing, human-computer interaction and psychology \cite{emotionRecognition}. Multiple approaches exist to the task exist, such as rule-based, classical learning and deep learnning methods. Pre-trained models, for example BERT \cite{bert}, have seen success classifying multiple emotions within song lyrics \cite{edmonds-sedoc-2021-multi}.
+
+Semantic textutal similarity (STS) is the task of comparing two texts and deciding whether they have similar meaning. There are many approaches to this task, such as comparing vector embeddings, comparing alignment and using machine learning models \cite{semanticTextSimilarity}. After producing word vectors with GloVe \cite{pennington-etal-2014-glove}, Sanborn et al evaluated using both recurrent and recursive neural networks to calculate semantic similarity \cite{Sanborn2015DeepLF}.
 
 \section{Methodology}
 The methodology of the project can be split up into different steps, which can be seen in the flowchart below. Each of the different steps will be explored in detail.
@@ -45,7 +55,7 @@ The methodology of the project can be split up into different steps, which can b
 \end{figure}
 
 \subsection{Emotion Recognition Model}
-The first task to be performed was to train ane motion recognition model to classify a given input of text into an emotion class. The dataset used was the dair-ai/emotion dataset \cite{emotiondata} from HuggingFace. The dataset consists sentences that have been classified into one of six separate emotion classes - sadness, joy, love, anger, fear and surprise. The dataset contains two separate splits; one with 20,000 samples split into a training, testing and validation set, and another with 417,000 samples in one set. For this project, the larger split with 417,000 samples was chosen to train the model.
+The first task to be performed was to train an emotion recognition model to classify a given input of text into an emotion class. The dataset used was the dair-ai/emotion dataset \cite{emotiondata} from HuggingFace. The dataset consists sentences that have been classified into one of six separate emotion classes - sadness, joy, love, anger, fear and surprise. The dataset contains two separate splits; one with 20,000 samples split into a training, testing and validation set, and another with 417,000 samples in one set. For this project, the larger split with 417,000 samples was chosen to train the model.
 
 After being read in, the dataset was checked for imbalances between the labels in the dataset, which was immediately obviously present. The sadness and joy classes had 121,187 and 141,067 samples respectively, whils the surprise class only have 14,972 samples. To combat this imbalance, downsampling was performed to randomly select 5,000 samples from each of the classes to form a new dataset of 30,000 samples. Due to a lack of dedicated hardware to quickly train models, a smaller dataset of only 2,000 samples was created using the same downsampling method - to be used for experimenting with hyperparameters before training the final model. The larger dataset was split into a training and testing set, with a 0.85:0.15 train:test split; resulting in 25,500 samples being used for training and 4,500 for testing. The smaller dataset was also split.
 
@@ -56,7 +66,7 @@ To have songs to generate playlists from, the Spotify Million song dataset \cite
 
 \subsection{STS Model}
 
-To calculate the semantic textual similarity between two songs, a MiniLM \cite{minilm} model, which is a distilled version of a large transformer model scuh as BERT \cite{bert} was used. The particular model in question had 6 layers, was finetuned on a dataset of 1B sentence pairs and was loaded from HuggingFace \cite{stsmodel} using sentence-transformers. To compare the similarity between embeddings generated between by this model, a function to compute cosine similarity was written and used. All pre-processing/encoding needed was performed by the model itself, so no such code was necessary when using this model. 
+To calculate the semantic textual similarity between two songs, a MiniLM \cite{minilm} model, which is a distilled version of a large transformer model scuh as BERT \cite{bert}, was used. The particular model in question had 6 layers, was finetuned on a dataset of 1B sentence pairs, and was loaded from HuggingFace \cite{stsmodel} using sentence-transformers. To compare the similarity between embeddings generated by this model, a function to compute cosine similarity was written and used. All pre-processing/encoding needed was performed by the model itself, so no such code was necessary when using this model. 
 An experiment to evaluate the performance of this model was written and run, but shall be discussed in the evaluation section of this report.
 
 \subsection{Demo}
@@ -126,11 +136,15 @@ There is no mathematical way to evaluate the performance of the final playlist g
 \section{Discussion}
 The results you obtained should be analysed, interpreted and discussed. Do they correspond to what you have expected? Are they surprising or unexpected? Try to find an explanation for what you have observed, but be careful about making statements that are too strong or too general. Are your explanations substantiated by your experimental evidence? How do your results relate to what others have done? This is another point in the report where you could link back to existing literature, especially when comparing your results with those obtained in previous work. Depending on the depth of the discussion, this can be either its own section, or can be merged with the evaluation section.
 
-
 Maybe show the confusion matrix and the recall scores here? I put pictures in the images folder but I don't really get this vs evaluation part. Might be easier to do them both together.
 
+
+
 \section{Conclusion}
-Summarise what you have done to address the problem, and what it potentially means. What could be some reasonable follow-on work based on what you have done? 
+
+A playlist generator has been produced that takes an input text, and produces a list of \textit{k} songs that have emotionally and semantically similar lyrics. This can be used by streaming services and their users to generate new playlists with new songs.
+
+This project could be continued by connecting this system to a user interface that allows a user to select an existing song or enter input text. It could also be linked to the Spotify Application Programming Interface (API) to actually produce these playlists.
 
 \bibliographystyle{acl_natbib}
 \bibliography{custom}
